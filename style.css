@@ -1650,3 +1650,120 @@ select.form-control {
   border-color: var(--color-success) !important;
   background-color: rgba(var(--color-success-rgb), 0.1);
 }
+
+/* Cool hover scale and shadow for buttons & cards */
+button, .card, .project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover, .card:hover, .project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(33, 128, 141, 0.25);
+}
+
+/* Hero title text reveal */
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  animation: textReveal 1.2s ease forwards;
+}
+
+/* Floating effect on hero profile image */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.hero-image {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Fade in with delay for sections */
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #ddd;
+}
+
+body.dark-mode header, body.dark-mode footer {
+  background-color: #222;
+}
+
+body.dark-mode .card, body.dark-mode .project-card {
+  background-color: #1e1e1e;
+  box-shadow: none;
+}
+
+/* Dark mode toggle button */
+#darkModeToggle {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 5rem;
+  background-color: #2190a6;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(33, 128, 141, 0.5);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+#darkModeToggle:hover {
+  background-color: #16707a;
+}
+
+/* Back-to-top button */
+#backToTop {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  background-color: #2190a6;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(33, 128, 141, 0.5);
+  display: none; /* initially hidden */
+  z-index: 1000;
+}
+
+#backToTop:hover {
+  background-color: #16707a;
+}
+
+/* Skill bar animation with delay */
+.skill-bar {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideIn 0.8s forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
