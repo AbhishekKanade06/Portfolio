@@ -584,3 +584,58 @@ const notificationStyles =
 const styleSheet = document.createElement('style');
 styleSheet.textContent = notificationStyles;
 document.head.appendChild(styleSheet);
+
+// Dark mode toggle logic
+const darkModeToggle = document.createElement('button');
+darkModeToggle.id = 'darkModeToggle';
+darkModeToggle.textContent = '🌙 Dark Mode';
+document.body.appendChild(darkModeToggle);
+
+darkModeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  if (document.body.classList.contains('dark-mode')) {
+    darkModeToggle.textContent = '☀️ Light Mode';
+  } else {
+    darkModeToggle.textContent = '🌙 Dark Mode';
+  }
+});
+
+// Back-to-top button logic
+const backToTopBtn = document.createElement('button');
+backToTopBtn.id = 'backToTop';
+backToTopBtn.textContent = '↑ Top';
+document.body.appendChild(backToTopBtn);
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.style.display = 'block';
+  } else {
+    backToTopBtn.style.display = 'none';
+  }
+});
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Hero title auto typing effect
+function typeWriter(element, text, delay = 100) {
+  let i = 0;
+  element.textContent = '';
+  function type() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, delay);
+    }
+  }
+  type();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    const fullText = heroTitle.textContent.trim();
+    typeWriter(heroTitle, fullText, 80);
+  }
+});
